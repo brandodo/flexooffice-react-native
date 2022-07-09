@@ -1,23 +1,15 @@
 import { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import LoginPage from "./src/pages/LoginPage";
-import Dashboard from "./src/pages/Dashboard";
+import Login from "./src/screens/Login";
+import Dashboard from "./src/screens/Dashboard";
 
 const API_URL = "https://flexooffice-server.herokuapp.com";
 
-const MyTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: "beige",
-  },
-};
-
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: "beige",
+    backgroundColor: "#fdf8f4",
   },
 });
 
@@ -28,14 +20,14 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <NavigationContainer theme={MyTheme}>
+    <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Login">
           {(props) => (
-            <LoginPage
+            <Login
               {...props}
               user={username}
               pass={password}
