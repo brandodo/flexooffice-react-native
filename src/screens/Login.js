@@ -52,10 +52,18 @@ const Login = ({
             </Text>
             <Text style={styles.text}>Log-In</Text>
             <View style={[styles.buttons.general, styles.buttons.primary]}>
-              <Button title="Employee" onPress={() => setType("Employee")} />
+              <Button
+                color="#4e6664"
+                title="Employee"
+                onPress={() => setType("Employee")}
+              />
             </View>
             <View style={[styles.buttons.general, styles.buttons.primary]}>
-              <Button title="Employer" onPress={() => setType("Employer")} />
+              <Button
+                color="#4e6664"
+                title="Employer"
+                onPress={() => setType("Employer")}
+              />
             </View>
           </View>
         )}
@@ -71,6 +79,7 @@ const Login = ({
             <View>
               <View style={[styles.buttons.general, styles.buttons.secondary]}>
                 <Button
+                  color="#4e6664"
                   title="Enter"
                   onPress={() => goToDashboard(user, pass)}
                 />
@@ -131,7 +140,6 @@ const styles = StyleSheet.create({
       width: 300,
     },
     primary: {
-      color: "#4e6664",
       backgroundColor: "#96c8d0",
     },
     secondary: {

@@ -68,7 +68,7 @@ const Status = ({ status, updated }) => {
       </LinearGradient>
       <Text style={styles.text.general}>Last recorded: {updated}</Text>
       <View style={styles.button}>
-        <Button title="Update My Status" />
+        <Button color="#4e6664" title="Update My Status" />
       </View>
     </View>
   );

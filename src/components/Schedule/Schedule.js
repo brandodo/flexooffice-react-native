@@ -1,9 +1,14 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
+import Cards from "./Cards";
 
-const Schedule = () => {
+const Schedule = ({ data }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text.subHeader}>My Schedule</Text>
+      <Cards data={data} />
+      <View style={styles.button}>
+        <Button color="#4e6664" title="Book In-Office Time" />
+      </View>
     </View>
   );
 };
@@ -26,6 +31,20 @@ const styles = StyleSheet.create({
       fontWeight: "600",
       paddingBottom: 15,
     },
+  },
+  button: {
+    backgroundColor: "#f2cda0",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 3,
+      height: 3,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    borderRadius: "5px",
+    padding: 5,
+    margin: 10,
+    width: 300,
   },
 });
 

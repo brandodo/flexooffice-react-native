@@ -7,8 +7,23 @@ import Schedule from "../components/Schedule/Schedule";
 import Header from "../components/Header/Header";
 
 const Dashboard = ({ data, bg }) => {
-  const { username, userInfo, event } = data;
+  const { username, userInfo, event, booking } = data;
   const { qrcodecolor, date } = userInfo[0];
+
+  const temp1 = event.map((e) => {
+    return { name: e.name, date: e.date, time: e.time, location: e.location };
+  });
+
+  const temp2 = booking.map((b) => {
+    return {
+      name: "Work",
+      date: b.date,
+      time: b.booking[0].timeperiod,
+      location: `${b.roomname} Room`,
+    };
+  });
+
+  const schedulePreview = [...temp1, ...temp2];
 
   return (
     <SafeAreaView style={styles.mainView}>
@@ -22,7 +37,7 @@ const Dashboard = ({ data, bg }) => {
         </View>
         <News />
         <Status status={qrcodecolor} updated={date} />
-        <Schedule />
+        <Schedule data={schedulePreview} />
         <Text>Here's what you have going on for this week:</Text>
         <Events events={event} />
       </ScrollView>
