@@ -26,12 +26,12 @@ const Login = ({
 
   const goToDashboard = async (email, password) => {
     try {
-      const validateUser = await axios.post(`${API_URL}/login`, {
+      const { data } = await axios.post(`${API_URL}/login`, {
         email,
         password,
       });
 
-      setUser(validateUser.data);
+      setUser(data);
       navigation.navigate("Dashboard");
     } catch (err) {
       return alert(err);

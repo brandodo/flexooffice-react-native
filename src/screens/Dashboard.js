@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import News from "../components/News/News";
 import Status from "../components/Status/Status";
 import Events from "../components/Events/Events";
 import Schedule from "../components/Schedule/Schedule";
+import Header from "../components/Header/Header";
 
 const Dashboard = ({ data, bg }) => {
   const { username, userInfo, event } = data;
@@ -10,6 +12,7 @@ const Dashboard = ({ data, bg }) => {
 
   return (
     <SafeAreaView style={styles.mainView}>
+      <Header username={username} />
       <ScrollView contentContainerStyle={[styles.container, bg]}>
         <View style={styles.text.container}>
           <Text style={styles.text.header}>
@@ -34,6 +37,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
     alignItems: "center",
+    marginTop: 75,
   },
   text: {
     container: {
