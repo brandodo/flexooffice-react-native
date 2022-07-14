@@ -1,30 +1,36 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
 const API_URL = "https://flexooffice-server.herokuapp.com";
 
 const Event = ({ data }) => {
-  const { name, date, time, imageLarge } = data;
-  const imageUrl = `${API_URL}/${imageLarge}`;
+  const { eventinfo } = data;
+  const { name, date, time, location, imageSmall, imageLarge } = eventinfo;
+  const imageUrl = `${API_URL}/${imageSmall}`;
 
   return (
     <View style={styles.container}>
-      <Text>{name}</Text>
-      <Text>{date}</Text>
-      <Text>{time}</Text>
-      <Image style={styles.image} source={{ uri: imageUrl }} />
+      <ImageBackground
+        source={{ uri: imageUrl }}
+        style={{ width: 200 }}
+        resizeMode="cover"
+      >
+        <Text>{name}</Text>
+        <Text>{location}</Text>
+        <Text>
+          {time}, {date}
+        </Text>
+      </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 5,
+    flex: 1,
+    flexDirection: "row",
     padding: 10,
-    backgroundColor: "lightblue",
-  },
-  image: {
-    height: 50,
-    width: 50,
+    marginRight: 15,
+    height: 200,
   },
 });
 

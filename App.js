@@ -5,8 +5,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./src/screens/Login";
 import Dashboard from "./src/screens/Dashboard";
 
-const API_URL = "https://flexooffice-server.herokuapp.com";
-
 const styles = StyleSheet.create({
   background: {
     backgroundColor: "#fdf8f4",
@@ -34,7 +32,6 @@ export default function App() {
               setUsername={setUsername}
               setPassword={setPassword}
               setUser={setUser}
-              API_URL={API_URL}
               bg={styles.background}
             />
           )}

@@ -9,11 +9,11 @@ import {
 } from "react-native";
 import LoginInput from "../components/LoginInput/LoginInput";
 import headerStock from "../../assets/images/17839577_generated.jpg";
+import { API_URL } from "../components/utils";
 import logo from "../../assets/images/flex-office-logo_V01.png";
 import axios from "axios";
 
 const Login = ({
-  API_URL,
   navigation,
   user,
   pass,

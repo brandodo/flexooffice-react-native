@@ -1,14 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import News from "../components/News/News";
 import Status from "../components/Status/Status";
 import Events from "../components/Events/Events";
 import Schedule from "../components/Schedule/Schedule";
 import Header from "../components/Header/Header";
+import { API_URL } from "../components/utils";
+import axios from "axios";
 
 const Dashboard = ({ data, bg }) => {
   const { username, userInfo, event, booking } = data;
   const { qrcodecolor, date } = userInfo[0];
+  const [events, setEvents] = useState();
+
+  const fetchEvents = async () => {
+    const { data } = await axios.get(`${API_URL}/booking/event`);
+
+    setEvents(data);
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   const temp1 = event.map((e) => {
     return { name: e.name, date: e.date, time: e.time, location: e.location };
@@ -38,8 +51,7 @@ const Dashboard = ({ data, bg }) => {
         <News />
         <Status status={qrcodecolor} updated={date} />
         <Schedule data={schedulePreview} />
-        <Text>Here's what you have going on for this week:</Text>
-        <Events events={event} />
+        <Events events={events} />
       </ScrollView>
     </SafeAreaView>
   );

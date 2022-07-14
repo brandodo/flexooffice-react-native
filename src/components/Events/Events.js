@@ -1,22 +1,42 @@
 import Event from "./Event";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 
 const Events = ({ events }) => {
-  const listOfEvents = events.map((event, index) => (
+  if (!events) {
+    return null;
+  }
+
+  const filteredEvents = events.filter((event) => event.eventinfo.imageSmall);
+  const listOfEvents = filteredEvents.map((event, index) => (
     <Event key={index} data={event} />
   ));
 
-  return <View style={styles.container}>{listOfEvents}</View>;
+  return (
+    <View style={styles.container}>
+      <Text>Events</Text>
+      <ScrollView
+        contentContainerStyle={styles.tileContainer}
+        horizontal={true}
+      >
+        {listOfEvents}
+      </ScrollView>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     width: "100%",
     flex: 1,
-    flexDirection: "row",
     justifyContent: "space-around",
     flexWrap: "wrap",
-    direction: "ltr",
+    height: 350,
+    padding: 30,
+  },
+  tileContainer: {
+    flex: 1,
+    flexDirection: "row",
+    width: "100%",
   },
 });
 
